@@ -1,13 +1,15 @@
-#include "master/master.h"
 
-Master::Master(char **files, int nReduce) : m_files(files), m_nReduce(nReduce) {
 
+#include "master.h"
+#include "task.h"
+
+Master::Master(char **files, int filesCount, int nReduce)
+    : m_files(files), m_filesCount(filesCount), m_nReduce(nReduce) {
+  initMapTasks();
 }
 
-char **Master::getFiles() const {
-  return m_files;
-}
-
-void Master::setFiles(char **files) {
-  m_files = files;
+void Master::initMapTasks() {
+  for (int i = 0; i < m_filesCount; ++i) {
+    m_bqueue.push(std::make_shared<Task>(m_files[i]));
+  }
 }

@@ -1,15 +1,11 @@
-#ifndef LAB1_LAB1_INCLUDE_MASTER_TASK_H_
-#define LAB1_LAB1_INCLUDE_MASTER_TASK_H_
+#ifndef LAB1_LAB1_INCLUDE_TASK_TASK_H_
+#define LAB1_LAB1_INCLUDE_TASK_TASK_H_
+class Task {
+ public:
+  explicit Task() = delete;
+  explicit Task(char *file);
 
-enum TaskStage {
-  MAP = 1,
-  REDUCE = 2,
+ private:
+  char *m_file;
 };
-
-struct Task {
-  TaskStage stage;
-  char *file;
-
-};
-
-#endif //LAB1_LAB1_INCLUDE_MASTER_TASK_H_
+#endif //LAB1_LAB1_INCLUDE_TASK_TASK_H_

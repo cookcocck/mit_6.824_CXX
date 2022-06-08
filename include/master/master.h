@@ -1,20 +1,20 @@
 #ifndef LAB1_LAB1_INCLUDE_MASTER_MASTER_H_
 #define LAB1_LAB1_INCLUDE_MASTER_MASTER_H_
 
-#include "../bqueue/bqueue.h"
-#include "../task/task.h"
+#include "bqueue.hpp"
 
+class Task;
 class Master {
  public:
-  char **getFiles() const;
-  void setFiles(char **files);
-
   explicit Master() = delete;
-  explicit Master(char **files, int nReduce);
+  explicit Master(char **files, int filesCount, int nReduce);
+
+  void initMapTasks();
 
  private:
   char **m_files;
+  int m_filesCount;
   int m_nReduce;
-  BQueue<Task> m_bqueue;
+  BQueue<std::shared_ptr<Task>> m_bqueue;
 };
 #endif //LAB1_LAB1_INCLUDE_MASTER_MASTER_H_
