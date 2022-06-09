@@ -1,5 +1,3 @@
-
-
 #include "master.h"
 #include "task.h"
 
